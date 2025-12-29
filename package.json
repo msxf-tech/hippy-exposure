@@ -1,0 +1,76 @@
+{
+  "name": "@hippy/exposure",
+  "version": "1.0.0",
+  "description": "基于 hippy 3.3.2 以上版本的曝光 SDK",
+  "main": "dist/index.js",
+  "jsnext:main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "test": "npm run lint && nyc mocha",
+    "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "lint": "eslint -c .eslintrc.js src/**/*.ts ",
+    "lint:fix": "eslint -c .eslintrc.js 'src/**/*.ts' --fix",
+    "build:self": "rollup -c config/rollup.config.js",
+    "build:esm": "rollup -c config/rollup.config.esm.js",
+    "build:aio": "rollup -c config/rollup.config.aio.js",
+    "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
+    "build": "npm run clean && npm run build:self && npm run build:esm && npm run build:aio && npm run build:aio.min",
+    "coveralls": "nyc report --reporter=text-lcov",
+    "start:verdaccio": "pnpm verdaccio",
+    "pub:local": "pnpm publish --registry http://localhost:4873/ --no-git-checks"
+  },
+  "author": "xiaobo.cao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "bugs": {
+    "url": "https://github.com"
+  },
+  "files": [
+    "/dist",
+    "README.md",
+    "package.json"
+  ],
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "dependencies": {
+    "@hippy/exposure": "^1.0.4",
+    "@hippy/vue-next": "3.3.2",
+    "@vue/runtime-core": "3.4.32",
+    "@vue/shared": "3.4.32"
+  },
+  "resolutions": {
+    "minimatch": "^9.0.0"
+  },
+  "devDependencies": {
+    "@js-lib/cli": "^1.6.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0",
+    "babel-plugin-istanbul": "6.1.1",
+    "coveralls": "3.1.1",
+    "cross-env": "6.0.3",
+    "es5-shim": "4.6.7",
+    "eslint": "8.49.0",
+    "marked": "^11.0.1",
+    "mocha": "11.7.5",
+    "npm-cli-login": "^1.0.0",
+    "nyc": "17.1.0",
+    "rimraf": "6.1.2",
+    "rollup": "3.29.2",
+    "rollup-plugin-typescript2": "0.35.0",
+    "source-map-support": "0.5.21",
+    "ts-node": "10.9.1",
+    "typescript": "5.2.2",
+    "verdaccio": "^6.2.4"
+  }
+}
