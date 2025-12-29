@@ -14,7 +14,7 @@
 
 ## 🚀 项目简介
 
-**Hippy Exposure SDK** 是由应用平台研发团队-大前端小组精心打造的企业级 UI 元素曝光解决方案。基于插件化架构设计，为 Hippy 应用提供全方位、高精度的曝光检测能力。
+**Hippy Exposure SDK** 是精心打造的企业级 UI 元素曝光解决方案。基于插件化架构设计，为 Hippy 应用提供全方位、高精度的曝光检测能力。
 
 ### ✨ 核心特性
 
@@ -73,7 +73,6 @@ nativeEmitter.on(NATIVE_EVENT_ENUM.PAGE_SHOW, () => {
     exposure.forceExposureForAllElement();
   } else {
     // hippy 无法通过 Native API 获取较为准确的容器大小，需要由业务精确告知
-    // FUTURE: 如果未来有二级提额页(目前只有 tab)业务，需要这里加判断，设置不同的 size
     const size = SCREEN_SIZE;
     const containerSize = { width: size.width, height: size.height - TABBAR_HEIGHT };
     exposure.start(containerSize);
@@ -89,7 +88,7 @@ nativeEmitter.on(NATIVE_EVENT_ENUM.PAGE_HIDE, () => {
 start 需要传入整个 Hippy 外层容器的大小作为参数，建议通过 Bridge 查询客户端得到可靠的 Size 并传入，否则曝光可能不准确。
 
 ### 1.4 业务自行决定，是否需要在下拉刷新等事件后，主动曝光
-```
+```ts
 // 下拉刷新，触发强制重新曝光检查
 emitter.on(COMMON_EVENTS_ENUM.pageRefresh, triggerType => {
   if (triggerType === EFreshTriggerType.pullDown) {
