@@ -40,7 +40,6 @@
     "node": ">= 0.12.0"
   },
   "dependencies": {
-    "@hippy/exposure": "^1.0.4",
     "@hippy/vue-next": "3.3.2",
     "@vue/runtime-core": "3.4.32",
     "@vue/shared": "3.4.32"
