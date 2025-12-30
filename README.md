@@ -30,6 +30,11 @@
 - Hippy-Vue 版本: 3.3.2+
 - TypeScript: 5.2.2+ (可选)
 
+### Install
+```shell
+npm install --save @mx-hippy/exposure
+```
+
 ## 1 快速接入
 
 ### 1.1 使用自定义指令在元素上绑定曝光数据
@@ -42,7 +47,7 @@
 ### 1.2 创建并注入插件，设置全局统一数据曝光入口函数
 
 ```ts
-import exposure, { ExposurePluginFunction } from '@hippy/exposure';
+import exposure, { ExposurePluginFunction } from '@mx-hippy/exposure';
 
 // app 根节点 id: root
 const exposurePlugin = exposure.createExposurePlugin('root', {

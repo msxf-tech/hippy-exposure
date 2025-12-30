@@ -1,5 +1,5 @@
 {
-  "name": "@hippy/exposure",
+  "name": "@mx-hippy/exposure",
   "version": "1.0.0",
   "description": "基于 hippy 3.3.2 以上版本的曝光 SDK",
   "main": "dist/index.js",
